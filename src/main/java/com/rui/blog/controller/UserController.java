@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rui.blog.entity.Blog;
 import com.rui.blog.entity.User;
+import com.rui.blog.service.BlogService;
 import com.rui.blog.service.UserService;
 
 @Controller
@@ -19,9 +21,17 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private BlogService blogService;
+	
 	@ModelAttribute("user")
-	private User construct() {
+	private User constructUser() {
 		return new User();
+	}
+	
+	@ModelAttribute("blog")
+	private Blog constructBlog() {
+		return new Blog();
 	}
 	
 	@RequestMapping("/users")
@@ -52,5 +62,12 @@ public class UserController {
 		String name = principal.getName();
 		model.addAttribute("user", userService.findOneWithBlogs(name));
 		return "user-detail";
+	}
+	
+	@RequestMapping(value="/account", method=RequestMethod.POST)
+	public String doAddBlog(@ModelAttribute("blog") Blog blog, Principal principal){
+		String name = principal.getName();
+		blogService.save(blog, name);
+		return "redirect:/account.html";
 	}
 }
