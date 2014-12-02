@@ -6,19 +6,21 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<global-method-security pre-post-annotations="enabled"/>
+
 	<http use-expressions="true">
 		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
-		<form-login login-page="/login.html"/>
+		<form-login login-page="/login.html" />
 		<logout logout-url="/logout" />
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
-		
-		<password-encoder hash="bcrypt"/>
-		
+
+			<password-encoder hash="bcrypt" />
+
 			<jdbc-user-service data-source-ref="dataSource"
 				authorities-by-username-query="select user.name, role.name from user
 											   join user_role on user.id = user_role.users_id
