@@ -62,25 +62,31 @@
 <div class="tab-content">
 	<c:forEach items="${user.blogs}" var="blog">
 		<div role="tabpanel" class="tab-pane" id="blog_${blog.id}">
-			<h1><c:out value="${blog.name}" /></h1>
+			<h1>
+				<c:out value="${blog.name}" />
+			</h1>
 			<p>
-			
-			<a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger triggerRemove">remove blog</a>
-			
-			${blog.url}</p>
+
+				<a href="<spring:url value="/blog/remove/${blog.id}.html" />"
+					class="btn btn-danger triggerRemove">remove blog</a> ${blog.url}
+			</p>
 
 			<table class="table table-bordered table-hover table-striped">
 				<thead>
 					<tr>
-						<th>Title</th>
-						<th>Link</th>
+						<th>date</th>
+						<th>item</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${blog.items}" var="item">
 						<tr>
-							<td>${item.title}</td>
-							<td>${item.link}</td>
+							<td>${item.publishedDate}</td>
+							<td><strong><a
+									href="<c:out value="${item.link}" />" target="_blank"><c:out
+											value="${item.title}" /></a></strong> <br />
+											${item.description}
+											</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -90,22 +96,24 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Remove blog</h4>
-      </div>
-      <div class="modal-body">
-        Remove this?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <a href="" class="btn btn-danger removeBtn">Remove</a>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Remove blog</h4>
+			</div>
+			<div class="modal-body">Remove this?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<a href="" class="btn btn-danger removeBtn">Remove</a>
+			</div>
+		</div>
+	</div>
 </div>
 
-<script type="text/javascript" src="<c:url value="/resources/scripts/user-account.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/scripts/user-account.js" />"></script>

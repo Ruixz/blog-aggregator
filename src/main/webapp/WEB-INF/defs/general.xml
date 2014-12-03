@@ -43,4 +43,7 @@
 		<put-attribute name="current" value="login" />
 	</definition>
 	
+	<definition name="ajaxresult" template="/WEB-INF/layout/ajaxresult.jsp">
+	</definition>
+	
 </tiles-definitions>

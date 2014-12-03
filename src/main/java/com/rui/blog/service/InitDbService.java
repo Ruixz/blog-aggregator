@@ -58,24 +58,24 @@ public class InitDbService {
 		userRepository.save(userAdmin);
 		
 		Blog blogRuan = new Blog();
-		blogRuan.setName("Ruan");
-		blogRuan.setUrl("http://feeds.feedburner.com/ruanyifeng");
+		blogRuan.setName("Tomcat");
+		blogRuan.setUrl("http://www.tomcatexpert.com/blog/feed");
 		blogRuan.setUser(userAdmin);
 		blogRepository.save(blogRuan);
 		
-		Item item1 = new Item();
-		item1.setBlog(blogRuan);
-		item1.setTitle("first");
-		item1.setLink("http://www.ruanyifeng.com/blog/");
-		item1.setPublishedDate(new Date());
-		itemRepository.save(item1);
-		
-		Item item2 = new Item();
-		item2.setBlog(blogRuan);
-		item2.setTitle("second");
-		item2.setLink("http://www.ruanyifeng.com/blog/");
-		item2.setPublishedDate(new Date());
-		itemRepository.save(item2);
+//		Item item1 = new Item();
+//		item1.setBlog(blogRuan);
+//		item1.setTitle("first");
+//		item1.setLink("http://www.ruanyifeng.com/blog/");
+//		item1.setPublishedDate(new Date());
+//		itemRepository.save(item1);
+//		
+//		Item item2 = new Item();
+//		item2.setBlog(blogRuan);
+//		item2.setTitle("second");
+//		item2.setLink("http://www.ruanyifeng.com/blog/");
+//		item2.setPublishedDate(new Date());
+//		itemRepository.save(item2);
 		
 	}
 }

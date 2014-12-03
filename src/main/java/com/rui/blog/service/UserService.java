@@ -75,4 +75,9 @@ public class UserService {
 	public void delete(int id) {
 		userRepository.delete(id);
 	}
+
+	public User findOne(String userName) {
+		User user = userRepository.findByName(userName);
+		return user;
+	}
 }
